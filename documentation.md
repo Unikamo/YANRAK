@@ -32,27 +32,27 @@ X+08000  +------------------------+
 
 #### Stack
 
-**Size**: 8MB on Linux; 1MB on Windows
-**Management**: By the CPU, automatically
-**Speed**: Fast, because it moves the Stack Pointer
-**Span**: Only available within the scope its defined
-**Security Issues**: Stack Overflow if too much stack memory is used, Buffer overflow if volume of stored data is greater than the buffer/if allocated data is smaller than stored data
-**Usage**: Static Memory Allocation, temporary variables, function parameters, return addresses
-**Access**: Fast due to LFIO nature
-**Safety**: Safer, avoirs pointer-related errors and memory leaks
+**Size**: 8MB on Linux; 1MB on Windows\
+**Management**: By the CPU, automatically\
+**Speed**: Fast, because it moves the Stack Pointer\
+**Span**: Only available within the scope its defined\
+**Security Issues**: Stack Overflow if too much stack memory is used, Buffer overflow if volume of stored data is greater than the buffer/if allocated data is smaller than stored data\
+**Usage**: Static Memory Allocation, temporary variables, function parameters, return addresses\
+**Access**: Fast due to LFIO nature\
+**Safety**: Safer, avoirs pointer-related errors and memory leaks\
 
 
 #### Heap
 
-**Size**: No Limit/Max memory that OS provides
-**Management**: Manually, using malloc()
-**Speed**: Slower
-**Span**: Globally available
-**Security Issues**: Heap Overflow if too large inputs
-**Usage**: Return data that outlives the function that creates it, store unknown quantity of memory 
-    *Example*: "local" vs "global" in lua, where "local" is the Stack, "global" is the heap
-**Access**: Slower
-**Safety**: Not as safe as stack
+**Size**: No Limit/Max memory that OS provides\
+**Management**: Manually, using malloc()\
+**Speed**: Slower\
+**Span**: Globally available\
+**Security Issues**: Heap Overflow if too large inputs\
+**Usage**: Return data that outlives the function that creates it, store unknown quantity of memory\
+    *Example*: "local" vs "global" in lua, where "local" is the Stack, "global" is the heap\
+**Access**: Slower\
+**Safety**: Not as safe as stack\
 
 ## Booting from Hard Disk
 
