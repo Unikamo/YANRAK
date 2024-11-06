@@ -9,11 +9,11 @@ org 0x7c00 ; move to 0x7c00
 
 mov si, 0
 
-setvideomode: ; 320x300px - mode 13h
-	mov ah, 00h
-	mov al, 13h
-	int 0x10
-	jmp writepixel
+;setvideomode: ; 320x300px - mode 13h
+;	mov ah, 00h
+;	mov al, 13h
+;	int 0x10
+;	jmp waitforkeypress
 	
 ;clearscreen:
 ;	; set cursor position
@@ -34,30 +34,20 @@ setvideomode: ; 320x300px - mode 13h
 ;	jmp printchar ; print text after writing all
 ;
 
-writepixel:
-	mov cx, 160
-	mov dx, 100
-	mov al, 15
-
-pixelloop:
-	mov ah, 0x0C
-	int 0x10
-	add cx, 1            ; Increment X position
-	cmp cx, 320          ; Check if X exceeds screen width (320px)
-	jl continue_drawing  ; If not, continue drawing on the same line
-	mov cx, 0            ; Reset X to 0
-	add dx, 1            ; Move down to the next line (Y position)
-	cmp dx, 200          ; Check if Y exceeds screen height (200px)
-	jge waitforkeypress   ; If Y >= 200, stop drawing and wait for keypress
-
-continue_drawing:
-	add al, 1
-	cmp al, 255
-	jle pixelloop
 
 waitforkeypress: 
 	mov ah, 0x00
 	int 0x16
+	mov dh, al
+	cmp al, 126
+	jl printthing	
+	
+printthing:
+	mov ah, 0x0e ; prepare to print
+	mov al, dh ; print dh (ascii code)
+	int 0x10 ; print
+	jmp waitforkeypress
+		
 
 ; set video again for text mode - 03h
 	mov ah, 0x00
