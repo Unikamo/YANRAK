@@ -1,0 +1,10 @@
+
+1. Get keyboard input and show on screen
+2. Boot from Drive + with bootloader (possibly my own)
+3. Real boot
+	3.a. Boot using an input command from the user
+	3.b. Show commands "help" on start
+
+4. Include Shell (possibly my own)
+5. Include Text Editor (possibly my own)
+6. Allow file saving towards disk
